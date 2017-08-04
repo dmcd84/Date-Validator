@@ -15,7 +15,10 @@ describe Validator do
     expect(target.id).to eq 1
   end
 
-  it 'should return true is match is found' do
-    expect(validator.find_match(1)).to eq false
+  it 'should return true if match for record is found for id = 7' do
+    expect(validator.find_match(7)).to eq true
+  end
+  it 'should return true if match for record is found for id = 1' do
+    expect(validator.find_match(1)).to eq true
   end
 end

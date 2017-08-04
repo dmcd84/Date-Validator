@@ -17,6 +17,8 @@ products = Product.all
 
   def find_match(id)
     target = get_target(id)
-    (Product.all(:product => target.product) & Product.all(:customer => target.customer) & Product.all(:measure => target.measure)).nil?
+    base = Product.all(:product => target.product) & Product.all(:customer => target.customer) & Product.all(:measure => target.measure)
+    base = base.all(:valid_from.gt => target.valid_from) & base.all(:valid_from.lt => target.valid_to)
+    base.nil? ? false : true
   end
 end
