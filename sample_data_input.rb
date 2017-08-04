@@ -19,6 +19,7 @@ end
 
 def add_all_to_db(data)
   data.each{|product, customer, measure, value, valid_from, valid_to|create_entry(product, customer, measure, value, valid_from, valid_to)}
+  p 'Sample data imported to database'
 end
 
 add_all_to_db(sample_data)
