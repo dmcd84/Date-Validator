@@ -1,11 +1,11 @@
 require './models/product'
 
 class Validator
+  PRODUCTS = Product.all(:order => [:id.asc])
 
   def display
-    products = Product.all(:order => [:id.asc])
     p 'ROW ID' + ' | ' + 'PRODUCT' + ' | ' + 'CUSTOMER' + ' | ' + 'MEASURE' + ' | ' + 'VALID FROM' + ' | ' + 'VALID TO'
-    products.each do |product|
+    PRODUCTS.each do |product|
       p "#{product.id}" + ' | ' + "#{product.product}" + ' | ' + "#{product.customer}" + ' | ' + "#{product.measure}" + ' | ' + "#{product.value}" + ' | ' + "#{product.valid_from}" + ' | ' + "#{product.valid_to}"
     end
   end
@@ -25,5 +25,11 @@ class Validator
   def update_date(target, record)
     target.update(:valid_to => record.valid_from-1)
     p "Update complete: row #{target.id}"
+  end
+
+  def iterate_rows
+    PRODUCTS.each do |product|
+      find_match(product.id)
+    end
   end
 end
