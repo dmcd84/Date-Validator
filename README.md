@@ -50,7 +50,7 @@ then
 
 **Uploading sample data, running tests and the program**
 
-~ Upload the same data : `ruby sample_data_input.rb`
+~ Upload the sample data : `ruby sample_data_input.rb`
 
 ~ Run the tests : `rspec`
 
